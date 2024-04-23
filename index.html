@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanvasEcho - Online Art Gallery</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #444;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .grid-item:hover {
+            background-color: #555;
+        }
+
+        .artwork-img {
+            width: 10%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .artist-img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #444;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 10%;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #666;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-media img {
+            width: 30px;
+            height: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const artworkItems = document.querySelectorAll('.grid-item');
+
+        artworkItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                const artistName = item.querySelector('p:nth-child(2)').textContent;
+                const year = item.querySelector('p:nth-child(3)').textContent;
+                item.querySelector('h3').textContent = `${artistName} - ${year}`;
+            });
+
+            item.addEventListener('mouseout', () => {
+                const artworkTitle = item.querySelector('h3').textContent.split(' - ')[0];
+                item.querySelector('h3').textContent = artworkTitle;
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#exhibitions">Exhibitions</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#memberships">Memberships</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to CanvasEcho</h1>
+            <p>Discover and collect exceptional artworks from talented artists worldwide.</p>
+        </section>
+        <section id="exhibitions">
+            <h2>Exhibitions</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img src="artwork1.jpg" alt="Artwork 1" class="artwork-img">
+                    <h3>Artwork 1</h3>
+                    <p><label for="email">Artist:</label> John Doe</p>
+                    <p><label for="email">Year:</label> 2021</p>
+                </div>
+                <!-- Add more artwork divs here -->
+            </div>
+        </section>
+        <section id="artists">
+            <h2>Featured Artists</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <img src="artist1.jpg" alt="Artist 1" class="artist-img">
+                    <h3>Artist 1</h3>
+                    <p><label for="email">Bio:</label> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisi vel aliquam bibendum, nisi nisl tincidunt nisl, a aliquet nibh nisl ut nisl.</p>
+                </div>
+                <!-- Add more artist divs here -->
+            </div>
+        </section>
+        <section id="memberships">
+            <h2>Memberships</h2>
+            <p>Join our community and enjoy exclusive benefits.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2022 CanvasEcho. All rights reserved.</p>
+        <form>
+            <input type="email" id="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+        </form>
+        <div class="social-media">
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>
